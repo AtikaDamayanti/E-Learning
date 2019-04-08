@@ -61,65 +61,66 @@ class Peserta extends CI_Controller
             );
         }
         $result = $this->db->insert_batch('peserta', $dataj);
-
-        $lastPeserta = $this->pm->get_last_data_peserta($kj);
-        foreach ($lastPeserta as $j) {
-            $a['nik'] = $j->nik;
-            $a['nama'] = $j->nama;
-            $a['email'] = $j->email;
-            $a['mtr'] = $j->judul_materi;
-            $a['tm'] = date("d-m-Y",strtotime($j->tanggal_mulai));
-            $a['ts'] = date("d-m-Y",strtotime($j->tanggal_selesai));
-            $b[] = $a;
-        }
-        $c = count($b);
-        for ($i=0; $i < $c; $i++) { 
-            $receiver[] = $b[$i]['email'];
-        }
-        echo json_encode($receiver);
-        //DIBUAT ARRAY BIAR BISA NGIRIM BANYAK EMAIL
-        
-        //send email
-        //$this->load->library('email');
-
-        $sender = 'atikarizkyy@gmail.com';
-        $pasw = '@t1k4r1zky';
-
-        $config['protocol']     = 'smtp';
-        $config['smtp_host']    = 'smtp.googlemail.com';
-        $config['smtp_crypto']  = 'ssl';
-        $config['smtp_port']    = '465';
-        $config['smtp_timeout'] = '5';
-        $config['smtp_user']    = 'atikarizkyy@gmail.com';
-        $config['smtp_pass']    = '@t1k4r1zky';
-        $config['charset']      = 'utf-8';
-        $config['wordwrap']     = TRUE;
-        $config['mailpath']     = '/usr/sbin/sendmail';
-        $config['charset']      = 'iso-8859-1';
-        $config['newline']      = "\r\n";
-        $config['crlf']         = "\r\n";
-        $config['mailtype']     = 'html'; // or html
-        $config['validation']   = TRUE;
-        
-        $this->load->library('email', $config); 
-        $this->email->initialize($config); 
-        $this->email->from($sender, 'Divisi Human Capital Dev. & Learning Center');
-        $this->email->to($receiver);
-        $this->email->subject('Undangan Quiz');
-        for ($i=0; $i < $c; $i++) { 
-            $this->email->message($this->load->view('undangan_peserta',$b[$i],true));
-        }
-        $this->email->set_mailtype("html");
-
-        if($this->email->send())
-        {   
-            echo $this->email->print_debugger(); echo 'mail send';
-            echo json_encode(array("status" => TRUE));
-        }
-        else 
-        {
-            echo $this->email->print_debugger(); echo 'mail failed sent';
-            echo json_encode(array("status" => FALSE));
-        }
+		echo json_encode(array("status" => TRUE));
+		
+        //$lastPeserta = $this->pm->get_last_data_peserta($kj);
+        //foreach ($lastPeserta as $j) {
+        //    $a['nik'] = $j->nik;
+        //    $a['nama'] = $j->nama;
+        //    $a['email'] = $j->email;
+        //    $a['mtr'] = $j->judul_materi;
+        //    $a['tm'] = date("d-m-Y",strtotime($j->tanggal_mulai));
+        //    $a['ts'] = date("d-m-Y",strtotime($j->tanggal_selesai));
+        //    $b[] = $a;
+        //}
+        //$c = count($b);
+        //for ($i=0; $i < $c; $i++) { 
+        //    $receiver[] = $b[$i]['email'];
+        //}
+        //echo json_encode($receiver);
+        ////DIBUAT ARRAY BIAR BISA NGIRIM BANYAK EMAIL
+        //
+        ////send email
+        ////$this->load->library('email');
+        //
+        //$sender = 'atikarizkyy@gmail.com';
+        //$pasw = '@t1k4r1zky';
+        //
+        //$config['protocol']     = 'smtp';
+        //$config['smtp_host']    = 'smtp.googlemail.com';
+        //$config['smtp_crypto']  = 'ssl';
+        //$config['smtp_port']    = '465';
+        //$config['smtp_timeout'] = '5';
+        //$config['smtp_user']    = 'atikarizkyy@gmail.com';
+        //$config['smtp_pass']    = '@t1k4r1zky';
+        //$config['charset']      = 'utf-8';
+        //$config['wordwrap']     = TRUE;
+        //$config['mailpath']     = '/usr/sbin/sendmail';
+        //$config['charset']      = 'iso-8859-1';
+        //$config['newline']      = "\r\n";
+        //$config['crlf']         = "\r\n";
+        //$config['mailtype']     = 'html'; // or html
+        //$config['validation']   = TRUE;
+        //
+        //$this->load->library('email', $config); 
+        //$this->email->initialize($config); 
+        //$this->email->from($sender, 'Divisi Human Capital Dev. & Learning Center');
+        //$this->email->to($receiver);
+        //$this->email->subject('Undangan Quiz');
+        //for ($i=0; $i < $c; $i++) { 
+        //    $this->email->message($this->load->view('undangan_peserta',$b[$i],true));
+        //}
+        //$this->email->set_mailtype("html");
+        //
+        //if($this->email->send())
+        //{   
+        //    echo $this->email->print_debugger(); echo 'mail send';
+        //    echo json_encode(array("status" => TRUE));
+        //}
+        //else 
+        //{
+        //    echo $this->email->print_debugger(); echo 'mail failed sent';
+        //    echo json_encode(array("status" => FALSE));
+        //}
     }
 }

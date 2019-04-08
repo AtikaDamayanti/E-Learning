@@ -16,9 +16,6 @@
         <div class="x_content">
 
         <form method="post" id="peserta_form" action="javascript:void(0)">
-        
-        <input type="hidden" class="form-control" name="kode_peserta" 
-        value="<?php // echo gen_id("pt", "peserta", "kode_peserta", "4", "4");?>" />
 
         <input type="hidden" class="form-control" name="kode_jadwal" 
         value="<?php echo $kj ?>" />
@@ -86,7 +83,6 @@
       success: function(data)
       {
         if(data.status) {
-          alert("sukes");
           refresh('Data Disimpan','success');
         } else {
           for (var i = 0; i < data.inputerror.length; i++)  {
@@ -110,12 +106,11 @@
       type: tipe,
       showCancelButton: false,
       confirmButtonColor: "#8bdb6b",
-      confirmButtonText: "OK",
-      closeOnConfirm: true
+      confirmButtonText: "OK"
     }).then(function() {
       var tabel = $("#tbl_peserta").DataTable();
       tabel.ajax.reload();
-      $("input[name=peserta]").tagsinput('removeAll');
-    })
+			$('.pst').val('').trigger('change');
+    });
   }
 </script>

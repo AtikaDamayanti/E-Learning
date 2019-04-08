@@ -43,7 +43,7 @@ function cb_materi($id,$selected){
 function cb_peserta($selected,$kj){
     $ci = get_instance();
     $load = $ci->load->model('Peserta_model','pm');
-    $cmb = "<select name='peserta[]' multiple='multiple'>";
+    $cmb = "<select class='pst' name='peserta[]' multiple='multiple'>";
     $data = $ci->pm->get_karyawan($kj);
     foreach ($data as $d){
         $cmb .="<option value='".$d->nik."'";

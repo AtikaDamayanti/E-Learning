@@ -30,20 +30,20 @@
           <div class="col-md-6">
             <div class="form-group">
               <h5>Tanggal Mulai</h5>
-              <input type="text" class="form-control h5" name="tanggal_mulai" id="tanggal_mulai" />   
-              <span class="input-group-addon">
+              <input type="date" class="form-control h5" name="tanggal_mulai" id="tanggal_mulai" />   
+              <!--<span class="input-group-addon">
                   <span class="glyphicon glyphicon-time"></span>
-              </span>
+              </span>-->
             </div>
           </div>
           
           <div class="col-md-6">
             <div class="form-group">
               <h5>Tanggal Selesai</h5>
-              <input type="text" class="form-control h5" name="tanggal_selesai" id="tanggal_selesai" />
-              <span class="input-group-addon">
+              <input type="date" class="form-control h5" name="tanggal_selesai" id="tanggal_selesai" />
+              <!--<span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
-                    </span>
+                    </span>-->
             </div>
           </div>
         </div>

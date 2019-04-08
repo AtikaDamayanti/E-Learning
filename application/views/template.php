@@ -219,12 +219,12 @@
             theme : 'bootstrap'
         });
 
-        $('#tanggal_mulai').datetimepicker({
-          format : 'DD-MM-YYYY'
-        });
-        $('#tanggal_selesai').datetimepicker({
-          format : 'DD-MM-YYYY'
-        });
+        //$('#tanggal_mulai').datetimepicker({
+        //  format : 'DD-MM-YYYY'
+        //});
+        //$('#tanggal_selesai').datetimepicker({
+        //  format : 'DD-MM-YYYY'
+        //});
 
         $('.nav .nav-item').click(function(){
           //alert('ck');
