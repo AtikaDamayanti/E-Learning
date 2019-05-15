@@ -37,7 +37,7 @@
         <div class="row">
           <div class="col-md-12">
           <div class="form-group">
-            <h5>File Materi (PPT, DOC, PDF, Image) *Maks. 3 MB
+            <h5>File Materi (PPT, DOC, PDF, ZIP, RAR) *Maks. 40 MB
           </h5>
           <div class="input-group input-file">
             <span class="input-group-btn">
@@ -65,7 +65,7 @@
         
         <h2>Daftar Materi</h2>
         <div class="table-responsive">
-        <button class="btn btn-primary btn-md" onclick="refresh('Data Diperbarui','success')">refresh</button>
+        <button class="btn btn-primary btn-md" onclick="refresh('Data Diperbarui','success');">refresh</button>
         <table class="table table-striped table-bordered" id="tbl_mt" cellspacing="0" width="100%">
           <thead>
             <tr>
@@ -124,8 +124,7 @@
             $('.btn-reset').text("Edit");
             btn_method = 'edit';
         },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
+        error: function (jqXHR, textStatus, errorThrown){
            refresh('Gagal Ambil Data','danger');
        }
    });
@@ -155,10 +154,7 @@
           if(data.status) {
             refresh('Data Disimpan','success');
           } else {
-            for (var i = 0; i < data.inputerror.length; i++)  {
-              $('[name="'+data.inputerror[i]+'"]').parent().parent().addClass('has-error');
-              refresh('Data Gagal Disimpan','warning');
-            }
+						refresh('Data Gagal Disimpan','warning');
           }
           $('#btnSubmit').text('Simpan'); //change button text
           $('#btnSubmit').attr('disabled',false); //set button enable 
@@ -181,11 +177,12 @@
       type: tipe,
       showCancelButton: false,
       confirmButtonColor: "#8bdb6b",
-      confirmButtonText: "OK"
-    },
-    function(){
-      $('#tbl_mt').DataTable().ajax.reload();
-    });
+      confirmButtonText: "OK",
+      closeOnConfirm: true
+    }).then(function() {
+      var tabel = $("#tbl_mt").DataTable();
+        tabel.ajax.reload();
+    })
   }
   
   function bs_input_file() {

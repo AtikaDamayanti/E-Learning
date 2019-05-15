@@ -33,7 +33,7 @@ FROM jadwal j join peserta p on j.kode_jadwal = p.kode_jadwal
 
     function get_data_peserta($id)
     {
-        $q = $this->db->query("select k.nik as nik, nama, concat(jabatan,' ',dinas,' - ',divisi) as unit_kerja, ifnull(st.nama_status_test,'-') as status_tes, nilai_pre, nilai_post, ifnull(sh.nama_status_test,'-') as status_hasil
+        $q = $this->db->query("select k.nik as nik, nama, divisi as unit_kerja, ifnull(st.nama_status_test,'-') as status_tes, nilai_pre, nilai_post, ifnull(sh.nama_status_test,'-') as status_hasil
             from peserta p 
             right join jadwal w on w.kode_jadwal = p.kode_jadwal 
             join materi t on t.kode_materi = w.kode_materi

@@ -61,9 +61,9 @@ class Materi extends CI_Controller
         $newName = str_replace(' ', '_', $name);
 
         $config['upload_path'] = './uploads/';
-        $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|jpg|png|jpeg';
+        $config['allowed_types'] = 'pdf|doc|docx|ppt|pptx|jpg|png|jpeg|zip|rar';
         $config['max_filename'] = '255';
-        $config['max_size'] = '40048'; //40 MB
+        $config['max_size'] = '100000'; //100 MB
         $config['file_name'] = $newName;
         
         $this->load->library('upload', $config);
@@ -74,12 +74,7 @@ class Materi extends CI_Controller
             $this->model->add($newName);
             echo json_encode(array("status" => TRUE));
         } else {
-            ?>
-            <script type="text/javascript">
-                alert('File Too Big / Different File Type');
-                window.location.href = "<?php echo site_url('materi')?>";
-            </script>
-            <?php
+			echo json_encode(array("status" => FALSE));
         } 
     }
 

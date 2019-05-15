@@ -16,13 +16,13 @@ class Peserta_model extends CI_Model
     }
 
     function get_karyawan(){
-        $q = $this->db->query("select nik, concat(nama,' (',nik,')') as nama from karyawan where nik not in (select nik from peserta where kode_jadwal = 'JD.0001')");
+        $q = $this->db->query("select nik, concat(nama,' (',nik,')') as nama from karyawan");
         return $q->result();
     }
 
     function get_data_peserta($id)
     {
-        $q = $this->db->query("select k.nik as nik, ifnull(nama,'-') as nama, concat(jabatan,' ',dinas) as jabatan, ifnull(divisi, subdit) as unit_kerja
+        $q = $this->db->query("select k.nik as nik, ifnull(nama,'-') as nama, golongan, divisi as unit_kerja
             from peserta p 
             right join jadwal w on w.kode_jadwal = p.kode_jadwal 
             join materi t on t.kode_materi = w.kode_materi

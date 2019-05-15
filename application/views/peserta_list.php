@@ -46,7 +46,7 @@
               <th>No</th>
               <th>NIK</th>
               <th>Nama</th>
-              <th>Jabatan</th>
+							<th>Golongan</th>
               <th>Unit Kerja</th>
             </tr>
           </thead>

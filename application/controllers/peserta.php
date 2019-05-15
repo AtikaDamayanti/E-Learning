@@ -30,7 +30,7 @@ class Peserta extends CI_Controller
             $a[] = $no;
             $a[] = $k->nik;
             $a[] = $k->nama;
-            $a[] = $k->jabatan;
+            $a[] = $k->golongan;
             $a[] = $k->unit_kerja;
             $b[] = $a;
             $no++;
